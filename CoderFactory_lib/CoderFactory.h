@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdint>
+#include <memory>
 
 class IEncode 
 {
@@ -42,24 +43,24 @@ public:
 class CoderFactory
 {
 public:
-	virtual IEncode *CreateCoder() = 0;
+	virtual std::shared_ptr<IEncode> CreateCoder() = 0;
 	~CoderFactory() {}
 };
 
 class Hamming74EncodeFactory : public CoderFactory
 {
 public:
-	IEncode *CreateCoder() 
+	std::shared_ptr<IEncode> CreateCoder()
 	{
-		return new Hamming74Encode;
+		return std::make_shared<Hamming74Encode>();
 	}
 };
 
 class TurboEncodeFactory : public CoderFactory
 {
 public:
-	IEncode *CreateCoder()
+	std::shared_ptr<IEncode> CreateCoder()
 	{
-		return new TurboEncode;
+		return std::make_shared<TurboEncode>();
 	}
 };
