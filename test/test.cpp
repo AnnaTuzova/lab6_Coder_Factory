@@ -1,4 +1,5 @@
 #include "../CoderFactory_lib/CoderFactory.h"
+#include "../HammingEncoder_lib/HammingEncoder.h"
 #include <windows.h>
 #include <gtest/gtest.h>
 

@@ -4,26 +4,7 @@
 #include <vector>
 #include <cstdint>
 #include <memory>
-
-class IEncode 
-{
-public:
-	~IEncode() {}
-	virtual std::vector<uint8_t> Encode(std::vector<uint8_t> &input_data) = 0;
-};
-
-class Hamming74Encode : public IEncode
-{
-private:
-	const int kNumOfInputElements = 4;
-	const int kNumOfOutputElements = 7;
-
-	void AddingZeros(std::vector<uint8_t> &input_data);
-
-public:
-	~Hamming74Encode() {}
-	std::vector<uint8_t> Encode(std::vector<uint8_t> &input_data) override;
-};
+#include "../HammingEncoder_lib/HammingEncoder.h"
 
 class TurboEncode : public IEncode
 {
